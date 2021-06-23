@@ -17,43 +17,26 @@
           <P>バーナード：「さっきまでわからなかったけど、今のでわかったよ」</P>
           <P>アルバート：「まじで。ボクも今のでわかった」</P>
           <P>---------------------------会話-------------------------</P>
-          <div>
-            <p>選択月: <span id="candidate_month"></span></p>
-            <p>選択日: <span id="candidate_day"></span></p>
-          </div>
 
           <div>
             <form id="form" method="post" action="example.cgi">
               <p>選択肢<br></p>
               <div id="choices">
               </div>
+              <input type="button" value="解答する" onclick="getRadioValue('birthday')"/>
+              <div id="output"></div>
             </form>
           </div>
 
           <div>
             <form id="form" method="post" action="example.cgi">
-              <p>解答を選んでください<br></p>
               <div id="target">
               </div>
             </form>
           </div>
+        </div>
 
-          <P>相手: <span id="com_sum"></span></P>
-            <table>
-                <tr id="com_card">
-                </tr>
-            </table>
-        </div>
-        <div class="container">
-            <P>あなた:  <span id="your_sum"></span></P>
-            <table>
-                <tr id="your_card">
-                </tr>
-            </table>
-        </div>
         <button id="reset">リセット</button>
-        <button id="hit">ヒット</button>
-        <button id="stand">スタンド</button>
 </body>
 </html>
 <script src="js/index.js"></script>
