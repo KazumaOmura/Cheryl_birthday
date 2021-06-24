@@ -334,11 +334,13 @@
               break;
             }
           }
-        
+          var result_span = document.getElementById('result');
           if(collect_birthday == result){
-            alert("正解です");
+            result_span.innerHTML = "正解です！";
+            // alert("正解です");
           }
           else{
-            alert("不正解です");
+            result_span.innerHTML = "不正解です。";
+            // alert("不正解です");
           }
         }
