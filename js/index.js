@@ -17,6 +17,9 @@
         var select_birthdays = [];
         let x=0;
 
+        // 不正解選択肢の除外理由格納配列
+        let reason = [];
+
 
 
 
@@ -183,6 +186,7 @@
             //　誕生日の選択肢を追加する
             function init(){
               select_birthdays[x] = new Select_birthdays(candidate_month[n], candidate_day[choice_day[n2]]);
+              reason[x] = "「僕はシェリルの誕生日を知らないけど、バーナードも知らないよ」が成立しない"
               x++;
             };init();
 
@@ -198,6 +202,7 @@
               //　誕生日の選択肢を追加する
               function init(){
                 select_birthdays[x] = new Select_birthdays(candidate_month[n], candidate_day[collect_day]);
+                reason[x] = "正解です"
                 x++;
               };init(); 
             }
@@ -205,6 +210,7 @@
               //　誕生日の選択肢を追加する
               function init(){
                 select_birthdays[x] = new Select_birthdays(candidate_month[n], candidate_day[choice_day2]);
+                reason[x] = "「僕はシェリルの誕生日を知らなかったけど、今は知っているよ」が成立しない"
                 x++;
               };init(); 
           }
@@ -228,14 +234,12 @@
              //　誕生日の選択肢を追加する
              function init(){
                select_birthdays[x] = new Select_birthdays(candidate_month[n], candidate_day[choice_day3[i]]);
+               reason[x] = "「僕はシェリルの誕生日を知らなかったけど、今は知っているよ」が成立しない"
                x++;
              };init(); 
            }
          }
        }
-
-
-
 
        // 最初に除外した月に正解日と最後に確定した除外する2つの日をランダムで散らばせる
        let random = Math.floor( Math.random() * 2) + 1; //割合を決める
@@ -252,6 +256,7 @@
            //　誕生日の選択肢を追加する
            function init(){
              select_birthdays[x] = new Select_birthdays(candidate_month[choice_month[0]], candidate_day[choice_day3[i]]);
+             reason[x] = "「僕はシェリルの誕生日を知らなかったけど、今は知っているよ」が成立しない"
              x++;
            };init(); 
          }
@@ -262,6 +267,7 @@
            //　誕生日の選択肢を追加する
            function init(){
              select_birthdays[x] = new Select_birthdays(candidate_month[choice_month[0]], candidate_day[choice_day3[i]]);
+             reason[x] = "「僕はシェリルの誕生日を知らなかったけど、今は知っているよ」が成立しない"
              x++;
            };init(); 
          }
@@ -269,6 +275,7 @@
            //　誕生日の選択肢を追加する
            function init(){
              select_birthdays[x] = new Select_birthdays(candidate_month[choice_month[1]], candidate_day[collect_day]);
+             reason[x] = "「僕はシェリルの誕生日を知らなかったけど、今は知っているよ」が成立しない"
              x++;
            };init(); 
          }
@@ -335,12 +342,16 @@
             }
           }
           var result_span = document.getElementById('result');
+          var reason_span = document.getElementById('reason');
           if(collect_birthday == result){
             result_span.innerHTML = "正解です！";
+            reason_span.innerHTML = "";
             // alert("正解です");
           }
           else{
-            result_span.innerHTML = "不正解です。";
+            result_span.innerHTML = "不正解です";
+            reason_span.innerHTML = reason[result];
+
             // alert("不正解です");
           }
         }
